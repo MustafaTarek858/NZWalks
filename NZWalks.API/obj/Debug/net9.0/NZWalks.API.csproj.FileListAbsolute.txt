@@ -167,3 +167,4 @@ D:\Learning process\Restful Web API ASP.NET Core Samir course\NZWalks\NZWalks.AP
 D:\Learning process\Restful Web API ASP.NET Core Samir course\NZWalks\NZWalks.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Learning process\Restful Web API ASP.NET Core Samir course\NZWalks\NZWalks.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Learning process\Restful Web API ASP.NET Core Samir course\NZWalks\NZWalks.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Learning process\Restful Web API ASP.NET Core Samir course\NZWalks\NZWalks.API\obj\Debug\net9.0\NZWalks.API.sourcelink.json
