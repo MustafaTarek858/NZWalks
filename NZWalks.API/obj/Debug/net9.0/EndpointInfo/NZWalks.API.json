@@ -87,17 +87,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRegionRequestDTO"
+                "$ref": "#/components/schemas/UpdateRegionRequestDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRegionRequestDTO"
+                "$ref": "#/components/schemas/UpdateRegionRequestDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AddRegionRequestDTO"
+                "$ref": "#/components/schemas/UpdateRegionRequestDTO"
               }
             }
           }
@@ -164,6 +164,24 @@
   "components": {
     "schemas": {
       "AddRegionRequestDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "regionImageUrl": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateRegionRequestDTO": {
         "type": "object",
         "properties": {
           "name": {

@@ -16,6 +16,8 @@ namespace NZWalks.API.Controllers
             this.dbcontext = dbContext;
         }
 
+
+        //get all regions
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -42,8 +44,7 @@ namespace NZWalks.API.Controllers
             return Ok(regionsDTO); // Returns a 200 OK response with the list of regions
         }
 
-        //Returning single region using id
-
+        //get region by id
         [HttpGet]
         [Route("{id:guid}")]
         public IActionResult GetByID([FromRoute]Guid id)
@@ -70,7 +71,7 @@ namespace NZWalks.API.Controllers
            
             return Ok(regionsDTO);
         }
-
+        // create region
         [HttpPost]
         public IActionResult Create([FromBody] AddRegionRequestDTO addRegionRequestDTO)
         {
@@ -102,7 +103,6 @@ namespace NZWalks.API.Controllers
         //update region
         [HttpPut]
         [Route("{id:guid}")]
-
         public IActionResult Update([FromRoute] Guid id , [FromBody] UpdateRegionRequestDTO updateRegionRequestDTO)
         {
             var regionDomainModel = dbcontext.Regions.FirstOrDefault(x => x.Id == id);
@@ -127,6 +127,24 @@ namespace NZWalks.API.Controllers
             };
 
             return Ok(regionDTO);
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IActionResult Delete([FromRoute] Guid id)
+        {
+
+            var regionDomainModel = dbcontext.Regions.FirstOrDefault(x => x.Id == id);
+            if (regionDomainModel == null)
+            {
+                return NotFound();
+            }
+
+            dbcontext.Regions.Remove(regionDomainModel);
+            dbcontext.SaveChanges();
+
+            // Return a 200 OK response indicating successful deletion
+            return Ok();
         }
     }
 }
