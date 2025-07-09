@@ -8,9 +8,9 @@ namespace NZWalks.API.Repositories
     {
         private readonly NZWalksDbContext dbcontext; // Database context for accessing the database
 
-        SQLRegionRepository(NZWalksDbContext nZWalksDbContext)
+        public SQLRegionRepository(NZWalksDbContext nZWalksDbContext)
         {
-            nZWalksDbContext = dbcontext; // Assigning the provided database context to the class field
+            this.dbcontext = nZWalksDbContext; // Assigning the provided database context to the class field
         }
         public async Task<List<Region>> GetAllAsync()
         {
