@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\controllers\\regionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|d:\\learning process\\restful web api asp.net core samir course\\nzwalks\\nzwalks.api\\models\\dto\\regiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\models\\dto\\regiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|d:\\learning process\\restful web api asp.net core samir course\\nzwalks\\nzwalks.api\\models\\dto\\addregionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\models\\dto\\addregionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|d:\\learning process\\restful web api asp.net core samir course\\nzwalks\\nzwalks.api\\course_info\\restful_apis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\course_info\\restful_apis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|d:\\learning process\\restful web api asp.net core samir course\\nzwalks\\nzwalks.api\\models\\dto\\regiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C83411EB-7312-4582-9A49-C9E90E3266CC}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\models\\dto\\regiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UpdateRegionRequestDTO.cs",
               "DocumentMoniker": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Models\\DTO\\UpdateRegionRequestDTO.cs",
               "RelativeDocumentMoniker": "NZWalks.API\\Models\\DTO\\UpdateRegionRequestDTO.cs",
@@ -51,7 +51,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "RESTFUL_APIS.cs",
               "DocumentMoniker": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Course_Info\\RESTFUL_APIS.cs",
               "RelativeDocumentMoniker": "NZWalks.API\\Course_Info\\RESTFUL_APIS.cs",
@@ -63,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AddRegionRequestDTO.cs",
               "DocumentMoniker": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Models\\DTO\\AddRegionRequestDTO.cs",
               "RelativeDocumentMoniker": "NZWalks.API\\Models\\DTO\\AddRegionRequestDTO.cs",
@@ -76,15 +76,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "RegionDTO.cs",
               "DocumentMoniker": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Models\\DTO\\RegionDTO.cs",
               "RelativeDocumentMoniker": "NZWalks.API\\Models\\DTO\\RegionDTO.cs",
               "ToolTip": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Models\\DTO\\RegionDTO.cs",
               "RelativeToolTip": "NZWalks.API\\Models\\DTO\\RegionDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-07T11:46:55.252Z"
+              "WhenOpened": "2025-07-07T11:46:55.252Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -94,7 +95,7 @@
               "RelativeDocumentMoniker": "NZWalks.API\\Controllers\\RegionsController.cs",
               "ToolTip": "D:\\Learning process\\Restful Web API ASP.NET Core Samir course\\NZWalks\\NZWalks.API\\Controllers\\RegionsController.cs",
               "RelativeToolTip": "NZWalks.API\\Controllers\\RegionsController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAQwGUAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-07T11:47:40.947Z",
               "EditorCaption": ""

@@ -41,8 +41,18 @@
                 * Update Database 
                 
             8. fill controllers with CRUD  methods 
+
             
             9.adding the DTO models and use it also in the controllers 
+
+            10. use asynchronous programing by implmenting async/await logic to the controllers 
+                * This is done by adding async to the method signature and using Task<T> as the return type.
+                * Use await keyword when calling asynchronous methods, such as database queries.
+                * public asyn Task<IActionResult> GetAllAsync()
+                {
+                    var regions = await dbcontext.Regions.ToListAsync();
+                    // ... rest of the code
+                }
          */
     }
 }
