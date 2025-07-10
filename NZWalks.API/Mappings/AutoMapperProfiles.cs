@@ -11,6 +11,8 @@ namespace NZWalks.API.Mappings
         {
             // Create a mapping configuration for AutoMapper
             CreateMap<Region, RegionDTO>().ReverseMap(); // Allows mapping in both directions
+            CreateMap<AddRegionRequestDTO , Region>().ReverseMap();
+            CreateMap<UpdateRegionRequestDTO, Region>().ReverseMap();
 
         }
     }
