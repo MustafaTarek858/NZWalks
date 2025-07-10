@@ -1,0 +1,17 @@
+﻿using NZWalks.API.Models.Domain;
+using NZWalks.API.Models.DTO;
+using AutoMapper;
+
+namespace NZWalks.API.Mappings
+{
+    public class AutoMapperProfiles : Profile
+    {
+
+        public AutoMapperProfiles()
+        {
+            // Create a mapping configuration for AutoMapper
+            CreateMap<Region, RegionDTO>().ReverseMap(); // Allows mapping in both directions
+
+        }
+    }
+}

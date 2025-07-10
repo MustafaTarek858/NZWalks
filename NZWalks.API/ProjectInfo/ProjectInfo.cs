@@ -67,6 +67,10 @@
 
     12.Adding automapper to the project by download its packages and create the mapping class also injecting it to Program.cs
         this is used to map between domain models and DTOs, simplifying the conversion process and saving a lot of code that will be written
+        to make autoMapper work propably u need to inhirt from parent class "Profile"
+        packages
+            - AutoMaper
+            - automapper.extensions.microsoft.dependencyinjection
         */
 
 
