@@ -12,6 +12,11 @@ namespace NZWalks.API.Repositories
             this.DbContext = dbContext;
         }
 
+        async public Task<List<Walk>> GetAllAsync()
+        {
+            return await DbContext.Walks.ToListAsync(); 
+        }
+
         async public Task<Walk?> GetByIdAsync(Guid id) 
         {
             return await DbContext.Walks.FirstOrDefaultAsync(x => x.Id == id);
