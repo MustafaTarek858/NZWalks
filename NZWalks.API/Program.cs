@@ -16,6 +16,7 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 
 // injections
 builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+builder.Services.AddScoped<IWalkReository, SQLWalkRepository>();
 
 //Injecting AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
