@@ -15,6 +15,8 @@ namespace NZWalks.API.Models.DTO
 
         public Guid RegionId { get; set; }
 
-        
+        //navigation property
+        public Difficulty? Difficulty { get; set; }
+        public Region? Region { get; set; }
     }
 }

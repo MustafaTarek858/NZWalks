@@ -27,7 +27,7 @@ namespace NZWalks.API.Controllers
             return Ok(walkDTOs);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("{id:Guid}")]
         public async Task< IActionResult> GetById([FromRoute]Guid id)
         {
