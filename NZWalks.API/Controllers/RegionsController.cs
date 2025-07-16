@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
-using System.Diagnostics.Eventing.Reader;
+using NZWalks.API.CustomActionFilters;
+
+
 
 namespace NZWalks.API.Controllers
 {
@@ -53,33 +55,29 @@ namespace NZWalks.API.Controllers
 
         // create region
         [HttpPost]
+        [ValidateModel]
         public async Task< IActionResult> Create([FromBody] AddRegionRequestDTO addRegionRequestDTO)
         {
-            if (ModelState.IsValid)
-            {
-                var regionDomainModel = mapper.Map<Region>(addRegionRequestDTO);
+          
+            var regionDomainModel = mapper.Map<Region>(addRegionRequestDTO);
 
-                regionDomainModel = await regionRepository.CreateAsync(regionDomainModel); // Check if the region already exists by ID
+            regionDomainModel = await regionRepository.CreateAsync(regionDomainModel); // Check if the region already exists by ID
 
-                // mapping domain model to DTO
-                var createdRegionDTO = mapper.Map<RegionDTO>(regionDomainModel);
+            // mapping domain model to DTO
+            var createdRegionDTO = mapper.Map<RegionDTO>(regionDomainModel);
 
-                return CreatedAtAction(nameof(GetByID), new { id = createdRegionDTO.Id }, createdRegionDTO);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
+            return CreatedAtAction(nameof(GetByID), new { id = createdRegionDTO.Id }, createdRegionDTO);
+          
         }
 
 
         //update region
         [HttpPut]
         [Route("{id:guid}")]
+        [ValidateModel]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequestDTO updateRegionRequestDTO)
         {
-            if (ModelState.IsValid)
-            { 
+           
                 var regionDomainModel = mapper.Map<Region>(updateRegionRequestDTO);
 
                 var updatedRegion = await regionRepository.UpdateAsync(id, regionDomainModel);
@@ -92,11 +90,6 @@ namespace NZWalks.API.Controllers
                 var updatedRegionDTO = mapper.Map<RegionDTO>(updatedRegion);
 
                 return Ok(updatedRegionDTO);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
         }
 
 
