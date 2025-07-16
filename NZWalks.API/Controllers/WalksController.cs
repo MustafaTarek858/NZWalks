@@ -43,27 +43,41 @@ namespace NZWalks.API.Controllers
         [HttpPost]
         public async Task< IActionResult> Create([FromBody] AddWalkRequestDTO WalkDto )
         {
-            //mapping DomainModel 
-            var walkDomainModel = mapper.Map<Walk>(WalkDto);
-            var addedWalkDOmainModel = await walkRepo.CreateAsync(walkDomainModel);
-            var walkDTO =  mapper.Map<walkDTO>(addedWalkDOmainModel);
+            if (ModelState.IsValid)
+            {
+                //mapping DomainModel 
+                var walkDomainModel = mapper.Map<Walk>(WalkDto);
+                var addedWalkDOmainModel = await walkRepo.CreateAsync(walkDomainModel);
+                var walkDTO = mapper.Map<walkDTO>(addedWalkDOmainModel);
 
-            return CreatedAtAction(nameof(GetById), new { id = walkDTO.Id }, walkDTO);
-        }
+                return CreatedAtAction(nameof(GetById), new { id = walkDTO.Id }, walkDTO);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+            }
 
         [HttpPut]
         [Route("{id:Guid}")]
         public async Task<IActionResult> Update([FromBody] UpdateRegionRequestDTO updateWalkDTO , [FromRoute] Guid id)
         {
-            var wlakDomainModel = mapper.Map<Walk>(updateWalkDTO);
-            var updatedWalkDomainModel = await  walkRepo.UpdateAsync(id, wlakDomainModel);
-            if (updatedWalkDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
-            var updatedWalkDTO =  mapper.Map<UpdateWalkRequestDTO>(updatedWalkDomainModel);
+                var wlakDomainModel = mapper.Map<Walk>(updateWalkDTO);
+                var updatedWalkDomainModel = await walkRepo.UpdateAsync(id, wlakDomainModel);
+                if (updatedWalkDomainModel == null)
+                {
+                    return NotFound();
+                }
+                var updatedWalkDTO = mapper.Map<UpdateWalkRequestDTO>(updatedWalkDomainModel);
 
-            return Ok(updatedWalkDTO);
+                return Ok(updatedWalkDTO);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         [HttpDelete]
