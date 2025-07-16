@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NZWalks.API.Data;
 using NZWalks.API.Models.Domain;
 
@@ -12,11 +13,21 @@ namespace NZWalks.API.Repositories
             this.DbContext = dbContext;
         }
 
-        async public Task<List<Walk>> GetAllAsync()
+        async public Task<List<Walk>> GetAllAsync([FromQuery] string? filterOn = null, [FromQuery] string? filterQuery = null)
         {
-            return await DbContext.Walks.Include("Difficulty").Include("Region").ToListAsync();
-        }
+            var walks = DbContext.Walks.Include("Difficulty").Include("Region").AsQueryable();
 
+            if(string.IsNullOrWhiteSpace(filterOn) == false && string.IsNullOrWhiteSpace(filterQuery) == false )
+            {
+                if (filterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
+                {
+                    walks = walks.Where(x => x.Name.Contains(filterQuery));
+                }
+            }
+
+            return await walks.ToListAsync();
+        }
+            
         async public Task<Walk?> GetByIdAsync(Guid id)
         {
             return await DbContext.Walks.Include("Difficulty").Include("Region").FirstOrDefaultAsync(x => x.Id == id);
