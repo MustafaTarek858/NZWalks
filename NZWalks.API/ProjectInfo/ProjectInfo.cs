@@ -21,8 +21,14 @@
     Project Steps :
     1. Create a new ASP.NET Core Web API project
     2. Add necessary NuGet packages 
+
         *Microsoft.EntityFrameworkCore.SqlServer
         *Microsoft.EntityFrameworkCore.Tools
+        -------------------------------------------------------
+        *Microsoft.AspNetCore.authentication.JwtBearer
+        *microsoft.identity.tokens
+        *system.identitymodel.tokens.jwt
+        *microsoft.aspnetcore.identity.entityframeworkcore
 
     3.adjusting launchSettings.json file to use the correct port and launch URL
         * "launchUrl": "swagger/index.html"
@@ -71,6 +77,10 @@
         packages
             - AutoMaper
             - automapper.extensions.microsoft.dependencyinjection
+    13.JWt Authentication
+        * Install the necessary NuGet packages for JWT authentication.
+        * add jwt to appsettings.jason
+        * injecting JWT authentication in Program.cs and also use it as middleware in the pipeline befor authorization
         */
 
 

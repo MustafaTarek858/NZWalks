@@ -21,6 +21,9 @@ builder.Services.AddScoped<IWalkReository, SQLWalkRepository>();
 //Injecting AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
+//JWT Authentication
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
