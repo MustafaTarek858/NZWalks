@@ -4,6 +4,7 @@ using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
 using NZWalks.API.CustomActionFilters;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -11,6 +12,7 @@ namespace NZWalks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RegionsController : ControllerBase
     {
         private readonly IRegionRepository regionRepository;
