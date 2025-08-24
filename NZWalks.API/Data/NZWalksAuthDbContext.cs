@@ -28,8 +28,8 @@ namespace NZWalks.API.Data
 
                 new IdentityRole
                 {
-                Id = readerRoleId,
-                ConcurrencyStamp = readerRoleId,
+                Id = writerRoleId,
+                ConcurrencyStamp = writerRoleId,
                 Name = "Writer",
                 NormalizedName = "Writer".ToUpper()
                 }
