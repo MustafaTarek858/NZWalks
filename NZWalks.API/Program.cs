@@ -21,7 +21,12 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 
 // Register Auth DbContext
 builder.Services.AddDbContext<NZWalksAuthDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksAuthConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksAuthConnection"),
+    sqlOptions => sqlOptions.EnableRetryOnFailure(
+        maxRetryCount: 5,
+        maxRetryDelay: TimeSpan.FromSeconds(10),
+        errorNumbersToAdd:null
+    )));
 
 // injections
 builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
