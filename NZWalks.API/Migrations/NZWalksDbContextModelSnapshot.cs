@@ -63,6 +63,10 @@ namespace NZWalks.API.Migrations
                     b.Property<string>("FileDescription")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

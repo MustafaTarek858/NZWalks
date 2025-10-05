@@ -12,15 +12,15 @@ using NZWalks.API.Data;
 namespace NZWalks.API.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    [Migration("20250819105209_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250921151948_adding images table")]
+    partial class addingimagestable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.8")
+                .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -55,6 +55,35 @@ namespace NZWalks.API.Migrations
                             Id = new Guid("f808ddcd-b5e5-4d80-b732-1ca523e48434"),
                             Name = "Hard"
                         });
+                });
+
+            modelBuilder.Entity("NZWalks.API.Models.Domain.Image", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FileDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSizeInBytes")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("NZWalks.API.Models.Domain.Region", b =>

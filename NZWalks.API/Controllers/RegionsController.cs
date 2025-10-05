@@ -5,6 +5,7 @@ using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
 using NZWalks.API.CustomActionFilters;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.Json;
 
 
 
@@ -17,23 +18,39 @@ namespace NZWalks.API.Controllers
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
 
-        public RegionsController( IRegionRepository regionRepository , IMapper mapper)
+        public ILogger<RegionsController> Logger { get; }
+
+        public RegionsController( IRegionRepository regionRepository , IMapper mapper,ILogger<RegionsController> logger)
         {
             this.regionRepository = regionRepository; 
             this.mapper = mapper;
+            Logger = logger;
         }
 
 
         //get all regions
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        //[Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAll()
         {
-            var regionsDomain = await regionRepository.GetAllAsync(); 
+            try
+            {
+                throw new Exception("this is a custom exeption");
 
-            var regionsDTO = mapper.Map<List<RegionDTO>>(regionsDomain); 
+                var regionsDomain = await regionRepository.GetAllAsync();
 
-            return Ok(regionsDTO); 
+                Logger.LogInformation($"GetAll Regions was called{JsonSerializer.Serialize(regionsDomain)}");
+
+
+                var regionsDTO = mapper.Map<List<RegionDTO>>(regionsDomain);
+
+                return Ok(regionsDTO);
+            }
+            catch (Exception ex) 
+            {
+                Logger.LogError(ex , ex.Message); 
+                throw;
+            }
         }
 
 

@@ -8,11 +8,27 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+ var logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/NzWalks_Log.txt", rollingInterval:RollingInterval.Minute)
+    .MinimumLevel.Information()
+    .CreateLogger();
+
+
+builder.Logging.ClearProviders();
+
+builder.Logging.AddSerilog(logger);
+
 // Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddEndpointsApiExplorer();
 
 // Add Swagger
@@ -70,6 +86,7 @@ builder.Services.AddDbContext<NZWalksAuthDbContext>(options =>
 builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
 builder.Services.AddScoped<IWalkReository, SQLWalkRepository>();
 builder.Services.AddScoped<ITokenRepository , TokenRepository>();
+builder.Services.AddScoped<IImageRepository, LocalImageRepository>();
 
 //Injecting AutoMapper
 //builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
@@ -120,5 +137,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication(); // <-- Add this line to enable authentication
 app.UseAuthorization();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images"
+});
 app.MapControllers();
 app.Run();
