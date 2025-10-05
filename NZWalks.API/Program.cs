@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using Serilog;
+using Microsoft.AspNetCore.Diagnostics;
+using NZWalks.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -133,6 +135,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();       // <-- Required to generate Swagger JSON
     app.UseSwaggerUI();     // <-- Required to serve Swagger UI
 }
+
+app.UseMiddleware<ExeptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication(); // <-- Add this line to enable authentication
