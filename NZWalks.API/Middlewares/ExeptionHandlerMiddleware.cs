@@ -1,13 +1,14 @@
-﻿using System.Net;
+﻿using Microsoft.Extensions.Logging;
+using System.Net;
 
 namespace NZWalks.API.Middlewares
 {
     public class ExeptionHandlerMiddleware
     {
-        private readonly Logger<ExeptionHandlerMiddleware> logger;
+        private readonly ILogger<ExeptionHandlerMiddleware> logger;
         private readonly RequestDelegate next;
 
-        public ExeptionHandlerMiddleware(Logger<ExeptionHandlerMiddleware> logger , RequestDelegate next)
+        public ExeptionHandlerMiddleware(ILogger<ExeptionHandlerMiddleware> logger, RequestDelegate next)
         {
             this.logger = logger;
             this.next = next;
