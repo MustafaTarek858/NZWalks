@@ -35,8 +35,6 @@ namespace NZWalks.API.Controllers
         {
             try
             {
-                throw new Exception("this is a custom exeption");
-
                 var regionsDomain = await regionRepository.GetAllAsync();
 
                 Logger.LogInformation($"GetAll Regions was called{JsonSerializer.Serialize(regionsDomain)}");
