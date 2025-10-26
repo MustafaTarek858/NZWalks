@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using NZWalks.UI.Models;
 using NZWalks.UI.Models.DTO;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -50,27 +53,70 @@ namespace NZWalks.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddRegionViewModel addRegionRequest)
         {
-            var client = httpClientFactory.CreateClient();  
+            var client = httpClientFactory.CreateClient();
 
             var httpRequestMessage = new HttpRequestMessage()
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://localhost:7135/api/regions"),
-                Content = new StringContent(JsonSerializer.Serialize(addRegionRequest),Encoding.UTF8,"application/json")
+                Content = new StringContent(JsonSerializer.Serialize(addRegionRequest), Encoding.UTF8, "application/json")
             };
 
-            var httpResponseMessage =  await client.SendAsync(httpRequestMessage);
+            var httpResponseMessage = await client.SendAsync(httpRequestMessage);
 
             httpResponseMessage.EnsureSuccessStatusCode();
 
-            var respnse =  await httpResponseMessage.Content.ReadFromJsonAsync<RegionDto>();
+            var respnse = await httpResponseMessage.Content.ReadFromJsonAsync<RegionDto>();
+
+            if (respnse != null)
+            {
+                return RedirectToAction("Index", "Regions");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var client = httpClientFactory.CreateClient();
+
+            var response = await client.GetFromJsonAsync<RegionDto>($"https://localhost:7135/api/regions/{id.ToString()}");
+
+            if (response != null)
+            {
+                return View(response);
+            }
+
+            return View(null);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(RegionDto request)
+        {
+
+            var client = httpClientFactory.CreateClient();
+
+            var httpRequestMessage = new HttpRequestMessage()
+            {
+                Method = HttpMethod.Put,
+                RequestUri = new Uri($"https://localhost:7135/api/regions/{request.Id}"),
+                Content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json")
+            };
+
+            var httpResponseMessage = await client.SendAsync(httpRequestMessage);
+
+            httpResponseMessage.EnsureSuccessStatusCode();
+
+            var respnse = await httpResponseMessage.Content.ReadFromJsonAsync<RegionDto>();
 
             if(respnse != null)
             {
-                return RedirectToAction("Index", "Regions");
-            }   
+                return RedirectToAction("Edit", "Regions");
+            }
 
             return View();
         }
     }
-}   
+}

@@ -7,13 +7,13 @@
     <a class="btn btn-secondary" asp-controller="Regions" asp-action="Add" >Add Region</a>
 </div>
 
-<table>
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
             <th>Code</th>
-            <th>Image</th>
+            <th>Name</th>
+            <th> </th>
         </tr>
     </thead>
     <tbody>
@@ -24,14 +24,7 @@
                 <td>@region.Name</td>
                 <td>@region.Code</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(region.RegionImageUrl))
-                    {
-                        <img src="@region.RegionImageUrl" alt="@region.Name" width="100" />
-                    }
-                    else
-                    {
-                        <span>No Image</span>
-                    }
+                    <a asp-controller="Regions" asp-action="Edit" asp-route-id="@region.Id" class="btn btn-light" >Edit</a>
                 </td>
             </tr>
         }
